@@ -6,7 +6,7 @@ using std::endl;
 class String {
 public:
     String()
-        :_pstr(nullptr) {
+        :_pstr(new char[1]()) {
     }
 
     String(const char *pstr)
