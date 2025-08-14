@@ -31,7 +31,7 @@ public:
 
     String &append(const String &rhs) {
         char *temp = new char[strlen(_pstr) + strlen(rhs._pstr) + 1]();
-        strncpy(temp, _pstr, strlen(_pstr));
+        strcpy(temp, _pstr);
         strcat(temp, rhs._pstr);
         delete _pstr;
         _pstr = temp;
@@ -39,11 +39,9 @@ public:
     }
 
     String &append(const char *pstr) {
-        char *temp = new char[strlen(_pstr) + strlen(pstr) + 1]();
-        strncpy(temp, _pstr, strlen(_pstr));
-        strcat(temp, pstr);
-        delete _pstr;
-        _pstr = temp;
+        //代码复用
+        String temp = String(pstr);
+        append(temp);
         return *this;
     }
     ~String() {
