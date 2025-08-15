@@ -6,24 +6,25 @@ using std::endl;
 class String {
 public:
     String()
-        :_pstr(new char[1]()) {
-    }
+        :_pstr(new char[1]()) {}
 
     String(const char *pstr)
-        :_pstr(new char[strlen(pstr) + 1]()) {
-        strcpy(_pstr, pstr);
+        :_pstr(new char[strlen(pstr) + 1]())
+    {
+        strcpy(_pstr,pstr);
     }
 
     String(const String &rhs)
-        :_pstr(new char[strlen(rhs._pstr) + 1]()) {
-        strcpy(_pstr, rhs._pstr);
+        :_pstr(new char[strlen(rhs._pstr) + 1]())
+    {
+        strcpy(_pstr,rhs._pstr);
     }
 
     String &operator=(const String &rhs) {
         if (&rhs != this) {
             delete _pstr;
             _pstr = new char[strlen(rhs._pstr) + 1]();
-            strcpy(_pstr, rhs._pstr);
+            strcpy(_pstr,rhs._pstr);
         }
 
         return *this;
@@ -31,8 +32,8 @@ public:
 
     String &append(const String &rhs) {
         char *temp = new char[strlen(_pstr) + strlen(rhs._pstr) + 1]();
-        strcpy(temp, _pstr);
-        strcat(temp, rhs._pstr);
+        strcpy(temp,_pstr);
+        strcat(temp,rhs._pstr);
         delete _pstr;
         _pstr = temp;
         return *this;
