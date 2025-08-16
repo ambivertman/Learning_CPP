@@ -55,7 +55,7 @@ public:
         istringstream iss(line);
         while (iss >> word) {
             if (size_t index = find(word)) {
-                _dict[index]._freq++;
+                ++_dict[index]._freq;
             }
             else {
                 _dict.push_back({ word,1 });
@@ -64,14 +64,13 @@ public:
     }
 
     size_t find(const string &word) const {
-        for (size_t i = 1; i < _dict.size() + 1; i++) {
-            if (_dict[i]._word == word) {
-                return i;
+        for (size_t index = 1; index < _dict.size() + 1; ++index) {
+            if (_dict[index]._word == word) {
+                return index;
             }
         }
         return 0;
     }
-
 
 private:
     vector<Record> _dict;
