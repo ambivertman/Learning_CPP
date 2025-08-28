@@ -6,7 +6,6 @@ class Singleton{
 public:
     static Singleton & getInstance(){
         static Singleton s = Singleton();
-        
         return s;
     }
 
