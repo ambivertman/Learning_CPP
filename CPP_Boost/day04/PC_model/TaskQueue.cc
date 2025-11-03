@@ -10,7 +10,8 @@ int TaskQueue::pop(){
     unique_lock<mutex> ul(_mutex);    
     //2.判空
     //如果为空那就等待
-    if(isEmpty()){
+    /* if(isEmpty()){ */
+    while(isEmpty()){
         _notEmpty.wait(ul);
     }
     int temp = _que.front();
@@ -25,7 +26,8 @@ void TaskQueue::push(int value){
     unique_lock<mutex> ul(_mutex);    
     //2.判空
     //如果为空那就等待
-    if(isFull()){
+    /* if(isFull()){ */
+    while(isFull()){
         _notFull.wait(ul);
     }
     _que.push(value);
